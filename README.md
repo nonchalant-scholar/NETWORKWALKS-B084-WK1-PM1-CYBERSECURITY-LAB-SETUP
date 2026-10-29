@@ -1,17 +1,17 @@
 Networkwalks Cybersecurity Internship — Week 1
 Project Module 1: VirtualBox and Kali Linux Lab Setup
 1. Project Overview
-This project documents the setup and initial verification of a cybersecurity lab environment using Oracle VirtualBox and Kali Linux. The objective was to prepare a working virtual machine for cybersecurity practicals and verify its network connectivity.
-The lab setup includes Kali Linux, a VirtualBox NAT Network, internet connectivity, and a shared folder for accessing files from the host system.
+This project documents the setup and verification of a cybersecurity lab environment using Oracle VirtualBox and Kali Linux as part of the Networkwalks Cybersecurity Internship.
+The objective was to prepare a virtual machine for cybersecurity practice, configure its network connectivity, verify internet access, and organize the evidence of the completed setup.
 2. Objectives
 
-Set up and boot Kali Linux in Oracle VirtualBox.
-Configure the virtual machine's network adapter using a NAT Network.
-Verify the assigned IP address, subnet, and default gateway.
-Test network and internet connectivity.
-Configure clipboard, drag-and-drop, and shared-folder settings.
-Create a virtual machine snapshot for future lab work.
-Document the configuration and verification evidence.
+Install and configure the Kali Linux virtual machine in VirtualBox.
+Configure the virtual network using a NAT Network.
+Verify the Kali Linux network configuration.
+Test connectivity and internet access.
+Configure and verify shared-folder access between the host and virtual machine.
+Create a virtual machine snapshot.
+Document the setup and verification process with screenshots.
 
 3. Lab Environment
 
@@ -21,6 +21,10 @@ Component
 Configuration
 
 
+
+
+Host operating system
+Windows 11
 
 
 Virtualization software
@@ -35,120 +39,108 @@ Network mode
 NAT Network
 
 
-NAT Network name
-NatNetwork
-
-
 Network subnet
 10.0.0.0/24
 
 
-Network mask
-255.255.255.0
-
-
-Kali network interface
-eth0
-
-
-Kali IPv4 address observed
+Kali Linux IP address
 10.0.0.3/24
 
 
-Default gateway observed
+Default gateway
 10.0.0.1
 
 
-DHCP server observed
-10.0.0.2
-
-
-Host shared-folder mount
-sf_download
-
-
-Snapshot
-Created after lab setup
+Shared folder
+Host Downloads folder, accessible inside Kali Linux
 
 
 
 4. Network Configuration
-The Kali Linux virtual machine was connected to the VirtualBox NAT Network named NatNetwork.
-The configured network subnet was 10.0.0.0/24, with the subnet mask 255.255.255.0. The Kali Linux network interface eth0 received the IPv4 address 10.0.0.3/24.
-The observed default gateway was 10.0.0.1. The VirtualBox DHCP server was identified at 10.0.0.2, with the DHCP address pool beginning at 10.0.0.3.
-Observed configuration
+The Kali Linux virtual machine was connected to a VirtualBox NAT Network.
+The following network configuration was observed inside Kali Linux:
 
 Network interface: eth0
 IPv4 address: 10.0.0.3/24
-Subnet: 10.0.0.0/24
 Default gateway: 10.0.0.1
-DHCP server: 10.0.0.2
+Network subnet: 10.0.0.0/24
 
-Configuration note: The project instructions specify 10.0.0.2/24 for Kali Linux. In this setup, VirtualBox uses 10.0.0.2 as its DHCP server address, and Kali received 10.0.0.3/24 dynamically. The actual working configuration is documented here rather than assigning the DHCP server's address to the Kali guest.
-5. Network and Connectivity Verification
-The following commands were used to inspect and verify the network configuration.
-Check the IPv4 address
+The IP address was checked using:
 ip -4 addr
 
-The output showed the Kali network interface eth0 with the address 10.0.0.3/24.
-Check the routing table
+The default route was checked using:
 ip route
 
-The default route was observed through gateway 10.0.0.1, and the local network route covered 10.0.0.0/24.
-Test connectivity to the NAT Network DHCP server
+The observed IP address was 10.0.0.3/24. This is the address assigned to the Kali Linux virtual machine in the configured environment.
+
+5. Connectivity Verification
+Network connectivity was tested from Kali Linux.
+Commands used
 ping -c 4 10.0.0.2
 
-Replies were received from 10.0.0.2, confirming connectivity to that address.
-Test internet connectivity and DNS resolution
+ping -c 4 8.8.8.8
+
 ping -c 4 google.com
 
-The test returned four replies with zero packet loss, confirming that internet connectivity and hostname resolution were working at the time of testing.
-6. Shared Folder and Virtual Machine Integration
-A shared folder was configured to provide access to files from the Windows host system inside Kali Linux.
-The shared folder appeared on the Kali Linux desktop as sf_download, and the files from the host's Downloads folder were visible inside it.
-Clipboard and drag-and-drop options were also configured in the virtual machine settings to support interaction between the host and guest systems.
-7. Virtual Machine Snapshot
-A snapshot was created after the initial lab setup. This provides a restore point that can be used to return the virtual machine to its prepared state before performing further practical exercises.
-8. Evidence and Screenshots
-The following screenshots document the Kali Linux lab setup and network verification. All four images are stored in the repository's screenshots/ directory.
-1. Kali Linux Startup
-   kali-boot.png
+The connection to 10.0.0.2 was successful. Internet connectivity was also tested, including an external IP address and a domain name.
+These checks help verify local network communication, external connectivity, and DNS resolution.
+Note: The results of individual tests may depend on network conditions and firewall settings.
 
-This screenshot documents the successful startup of the Kali Linux virtual machine.
+6. Shared Folder and Virtual Machine Integration
+A shared folder was configured to provide access to files from the Windows host inside Kali Linux.
+The shared folder was visible on the Kali Linux desktop as:
+sf_download
+
+This setup helps transfer lab materials between the host operating system and the virtual machine.
+
+7. Virtual Machine Snapshot
+A snapshot was created after configuring the virtual machine.
+A snapshot provides a recovery point that can be used to return the VM to a previously saved state if later experiments cause configuration problems.
+
+8. Evidence and Screenshots
+The following screenshots are stored in this repository's screenshots directory. GitHub uses the image paths below to display them directly in this README.
+1. Successful Kali Linux Boot
+
+Evidence of the Kali Linux virtual machine starting successfully.
 2. VirtualBox Network Settings
 
-This screenshot documents the virtual machine's network configuration.
-3. Network Configuration
+Evidence of the virtual machine's network configuration in VirtualBox.
+3. Kali Linux Network Configuration
 
-This screenshot provides evidence of the network configuration.
+Evidence documenting the Kali Linux network configuration.
 4. Connectivity Test
 
-This screenshot documents the connectivity test performed during setup.
+Evidence of the connectivity test performed during lab verification.
+
 9. Troubleshooting and Observations
-Observation 1: Kali received 10.0.0.3 instead of 10.0.0.2
-The VirtualBox NAT Network DHCP configuration showed 10.0.0.2 as the DHCP server address and the dynamic address pool beginning at 10.0.0.3.
-Resolution: The existing DHCP-assigned address was retained. Connectivity was verified, and the actual configuration was documented. The DHCP server address was not manually assigned to Kali.
-Observation 2: Verifying internet access
-An IP address alone does not establish that internet access is working.
-Resolution: The command ping -c 4 google.com was used to test connectivity and hostname resolution. Four replies were received with zero packet loss during the test.
+During the setup and verification process, the following checks were useful:
+
+Confirming that the correct virtual network was selected in VirtualBox.
+Checking the assigned IP address and default gateway.
+Testing local network connectivity.
+Verifying internet connectivity separately from local connectivity.
+Confirming that the shared folder was visible inside Kali Linux.
+
+These checks help isolate common virtual machine networking and integration issues.
+
 10. Learning Outcomes
 Through this lab, I practised:
 
-Preparing a Kali Linux virtual machine using Oracle VirtualBox.
+Configuring a Kali Linux virtual machine in VirtualBox.
 Understanding NAT Network configuration and IPv4 addressing.
 Inspecting network interfaces and routing information in Linux.
-Identifying the role of a DHCP server and default gateway.
-Verifying connectivity using the ping command.
-Configuring shared-folder access between a host and guest operating system.
-Maintaining a snapshot as a recovery point for future lab activities.
-Recording technical evidence and documenting configuration observations.
+Testing local and external network connectivity.
+Accessing shared folders between a host and guest operating system.
+Using snapshots to support safer lab experimentation.
+Documenting technical work with reproducible commands and screenshots.
 
 11. Scope and Responsible Use
-This environment was prepared for educational cybersecurity training and authorised lab exercises. Future testing will be conducted only on systems and networks for which permission has been granted.
-12. Conclusion
-The Kali Linux lab environment was successfully started and configured in Oracle VirtualBox. The NAT Network was operational, the guest received an IPv4 address, internet connectivity was verified, and shared-folder access was established.
-The initial environment is ready for subsequent authorised cybersecurity practicals, subject to any additional requirements specified in future project modules.
+This environment is intended for educational cybersecurity practice. Any future scanning, testing, or exploitation activities will be conducted only against systems for which explicit authorization has been granted.
 
-Program: Networkwalks Cybersecurity Internship 2026
-Week: 1
-Module: Project Module 1 — Lab Setup: VirtualBox and Kali Linux
+12. Conclusion
+The Week 1 lab established a Kali Linux virtual machine for cybersecurity learning. Network configuration, connectivity, shared-folder access, and snapshot creation were addressed, and screenshots were organized as supporting evidence.
+This repository documents the setup process and provides a foundation for subsequent authorized cybersecurity lab exercises.
+
+Program: Networkwalks Cybersecurity Internship
+Module: Week 1 — Project Module 1
+Focus: VirtualBox and Kali Linux Lab Setup
