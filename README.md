@@ -10,7 +10,7 @@ Configure the virtual machine's network adapter using a NAT Network.
 Verify the assigned IP address, subnet, and default gateway.
 Test network and internet connectivity.
 Configure clipboard, drag-and-drop, and shared-folder settings.
-Create a clean virtual machine snapshot for future lab work.
+Create a virtual machine snapshot for future lab work.
 Document the configuration and verification evidence.
 
 3. Lab Environment
@@ -110,7 +110,7 @@ Clipboard and drag-and-drop options were also configured in the virtual machine 
 7. Virtual Machine Snapshot
 A snapshot was created after the initial lab setup. This provides a restore point that can be used to return the virtual machine to its prepared state before performing further practical exercises.
 8. Evidence and Screenshots
-The screenshots/ directory contains the following evidence captured during the lab setup.
+The following screenshots document the Kali Linux lab setup and network verification. All four images are stored in the repository's screenshots/ directory.
 1. Kali Linux Startup
 
 This screenshot documents the successful startup of the Kali Linux virtual machine.
