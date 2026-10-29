@@ -100,16 +100,20 @@ A snapshot provides a recovery point that can be used to return the VM to a prev
 8. Evidence and Screenshots
 The following screenshots are stored in this repository's screenshots directory. GitHub uses the image paths below to display them directly in this README.
 1. Successful Kali Linux Boot
+   ![Successful Kali Linux boot](screenshots/kali-boot.png)
 
 Evidence of the Kali Linux virtual machine starting successfully.
 2. VirtualBox Network Settings
+  ![VirtualBox network settings](screenshots/network-settings.png)
 
 Evidence of the virtual machine's network configuration in VirtualBox.
 3. Kali Linux Network Configuration
-
+  ![Kali Linux network configuration](screenshots/network%20configuration%20image.jpeg)
+  
 Evidence documenting the Kali Linux network configuration.
 4. Connectivity Test
-
+  ![Connectivity test](screenshots/connectivity-test.png)
+  
 Evidence of the connectivity test performed during lab verification.
 
 9. Troubleshooting and Observations
