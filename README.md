@@ -112,6 +112,7 @@ A snapshot was created after the initial lab setup. This provides a restore poin
 8. Evidence and Screenshots
 The following screenshots document the Kali Linux lab setup and network verification. All four images are stored in the repository's screenshots/ directory.
 1. Kali Linux Startup
+   kali-boot.png
 
 This screenshot documents the successful startup of the Kali Linux virtual machine.
 2. VirtualBox Network Settings
